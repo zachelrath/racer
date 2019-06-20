@@ -1,0 +1,15 @@
+{
+  "name": "racer",
+  "version": "1.0.0",
+  "description": "Race management for anyone!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zach McElrath",
+  "license": "MIT",
+  "devDependencies": {
+    "knex": "^0.17.6",
+    "mysql": "^2.17.1"
+  }
+}
