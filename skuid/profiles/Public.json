@@ -1,0 +1,150 @@
+{
+	"allowedEmailDomains": null,
+	"enableSignupApi": false,
+	"enableSignupUi": false,
+	"name": "Public",
+	"permissionSet": {
+		"appPermissions": {
+			"Racer": {
+				"isDefault": true
+			}
+		},
+		"dataSourcePermissions": {
+			"Racer": {
+				"dataSourceObjectPermissions": {
+					"participant_sakila": {
+						"createable": true,
+						"dataSourceFieldPermissions": {
+							"birthdate": {
+								"createable": true,
+								"queryable": true,
+								"updateable": true
+							},
+							"email": {
+								"createable": true,
+								"queryable": true,
+								"updateable": true
+							},
+							"first_name": {
+								"createable": true,
+								"queryable": true,
+								"updateable": true
+							},
+							"id": {
+								"createable": true,
+								"queryable": true,
+								"updateable": true
+							},
+							"last_name": {
+								"createable": true,
+								"queryable": true,
+								"updateable": true
+							},
+							"waiver_signature": {
+								"createable": true,
+								"queryable": true,
+								"updateable": true
+							}
+						},
+						"deleteable": false,
+						"queryable": true,
+						"updateable": true
+					},
+					"race_participant_sakila": {
+						"createable": true,
+						"dataSourceFieldPermissions": {
+							"end_time": {
+								"createable": true,
+								"queryable": true,
+								"updateable": false
+							},
+							"id": {
+								"createable": true,
+								"queryable": true,
+								"updateable": false
+							},
+							"participant_id": {
+								"createable": true,
+								"queryable": true,
+								"updateable": false
+							},
+							"race_id": {
+								"createable": true,
+								"queryable": true,
+								"updateable": false
+							},
+							"start_time": {
+								"createable": true,
+								"queryable": true,
+								"updateable": false
+							}
+						},
+						"deleteable": false,
+						"queryable": true,
+						"updateable": false
+					},
+					"race_sakila": {
+						"createable": false,
+						"dataSourceFieldPermissions": {
+							"address": {
+								"createable": false,
+								"queryable": true,
+								"updateable": false
+							},
+							"date": {
+								"createable": false,
+								"queryable": true,
+								"updateable": false
+							},
+							"end_time": {
+								"createable": false,
+								"queryable": true,
+								"updateable": false
+							},
+							"id": {
+								"createable": false,
+								"queryable": true,
+								"updateable": false
+							},
+							"latitude": {
+								"createable": false,
+								"queryable": true,
+								"updateable": false
+							},
+							"longitude": {
+								"createable": false,
+								"queryable": true,
+								"updateable": false
+							},
+							"name": {
+								"createable": false,
+								"queryable": true,
+								"updateable": false
+							},
+							"s3_photo_key": {
+								"createable": false,
+								"queryable": true,
+								"updateable": false
+							},
+							"start_time": {
+								"createable": false,
+								"queryable": true,
+								"updateable": false
+							},
+							"status": {
+								"createable": false,
+								"queryable": true,
+								"updateable": false
+							}
+						},
+						"deleteable": false,
+						"queryable": true,
+						"updateable": false
+					}
+				}
+			}
+		}
+	},
+	"requireEmailVerificationOnSignup": true,
+	"signupUi": null
+}

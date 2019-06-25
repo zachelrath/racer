@@ -1,0 +1,21 @@
+{
+	"allowedEmailDomains": null,
+	"enableSignupApi": false,
+	"enableSignupUi": false,
+	"name": "Admin",
+	"permissionSet": {
+		"appPermissions": {
+			"Racer": {
+				"isDefault": false
+			},
+			"Admin": {
+				"isDefault": false
+			}
+		},
+		"dataSourcePermissions": {
+			"Racer": {}
+		}
+	},
+	"requireEmailVerificationOnSignup": true,
+	"signupUi": null
+}

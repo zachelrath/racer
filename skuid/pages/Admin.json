@@ -1,0 +1,11 @@
+{
+	"apiVersion": "v2",
+	"uniqueId": "Admin",
+	"type": "Desktop",
+	"name": "Admin",
+	"module": "",
+	"maxAutoSaves": 25,
+	"isMasterPage": false,
+	"isPublic": false,
+	"composerSettings": null
+}

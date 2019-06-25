@@ -1,0 +1,11 @@
+{
+	"apiVersion": "v1",
+	"uniqueId": "MobileApp",
+	"type": "Desktop",
+	"name": "MobileApp",
+	"module": "",
+	"maxAutoSaves": 25,
+	"isMasterPage": false,
+	"isPublic": false,
+	"composerSettings": null
+}

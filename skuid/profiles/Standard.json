@@ -1,0 +1,12 @@
+{
+	"allowedEmailDomains": null,
+	"enableSignupApi": false,
+	"enableSignupUi": false,
+	"name": "Standard",
+	"requireEmailVerificationOnSignup": true,
+	"signupUi": null,
+	"permissionSet": {
+		"dataSourcePermissions": {},
+		"appPermissions": {}
+	}
+}

@@ -1,0 +1,112 @@
+<skuid__page unsavedchangeswarning="yes" personalizationmode="server" showsidebar="true" showheader="true" uniqueId="sk-1r4t-899">
+	<models>
+		<model id="Races" query="true" createrowifnonefound="false" datasource="Racer" limit="20" sobject="race_sakila" batchable="true" label="Race" labelplural="Races">
+			<fields>
+				<field id="name" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="name" required="false" sortable="false" rel="name__rel" relationshipname="name__rel"/>
+				<field id="date" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="date" required="false" sortable="false" rel="date__rel" relationshipname="date__rel"/>
+				<field id="end_time" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="end_time" required="false" sortable="false" rel="end_time__rel" relationshipname="end_time__rel"/>
+				<field id="start_time" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="start_time" required="false" sortable="false" rel="start_time__rel" relationshipname="start_time__rel"/>
+				<field id="status" accessible="true" createable="true" defaultvalue="" displaytype="PICKLIST" editable="true" filterable="false" groupable="false" label="Status" required="false" sortable="false" rel="status__rel" relationshipname="status__rel" overridemetadata="true" ogdisplaytype="ENUM" picklistsource="manual" returntype="TEXT">
+					<picklistentries>
+						<entry value="Not Started" label="Not Started"/>
+						<entry value="In Progress" label="In Progress"/>
+						<entry value="Completed" label="Completed"/>
+					</picklistentries>
+				</field>
+			</fields>
+			<conditions/>
+			<actions/>
+		</model>
+		<model id="Participants" query="true" createrowifnonefound="false" datasource="Racer" limit="20" sobject="participant_sakila" batchable="true" label="Participant" labelplural="Participants">
+			<fields>
+				<field id="email" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="email" required="false" sortable="false" rel="email__rel" relationshipname="email__rel"/>
+				<field id="birthdate" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="birthdate" required="false" sortable="false" rel="birthdate__rel" relationshipname="birthdate__rel"/>
+				<field id="first_name" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="first_name" required="false" sortable="false" rel="first_name__rel" relationshipname="first_name__rel"/>
+				<field id="last_name" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="last_name" required="false" sortable="false" rel="last_name__rel" relationshipname="last_name__rel"/>
+				<field id="waiver_signature" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="waiver_signature" required="false" sortable="false" rel="waiver_signature__rel" relationshipname="waiver_signature__rel"/>
+				<field id="HasWaiver" uionly="true" displaytype="FORMULA" length="255" label="Has Waiver?" ogdisplaytype="TEXT" readonly="true" returntype="TEXT">
+					<formula>NOT(ISBLANK({{waiver_signature}}))</formula>
+				</field>
+			</fields>
+			<conditions/>
+			<actions/>
+		</model>
+	</models>
+	<components>
+		<skuid__wrapper uniqueid="sk-1r5_-4973">
+			<components>
+				<skuid__header model="Participants" title="Race Management" uniqueid="sk-1r61-5805">
+					<styles>
+						<spacing bottom="4"/>
+					</styles>
+				</skuid__header>
+				<skuid__tabSet uniqueid="sk-1r4v-989">
+					<tabs>
+						<skuid__tabPanel name="Races" uniqueId="sk-1r4v-1096">
+							<components>
+								<skuid__table uniqueid="sk-1r51-2055" model="Races" mode="read">
+									<fields>
+										<field id="name" uniqueId="sk-1r51-2123" uniqueid="sk-1r51-2149"/>
+										<field id="status" uniqueId="sk-1r51-2255" uniqueid="sk-1r51-2281"/>
+										<field id="date" uniqueId="sk-1r51-2156" uniqueid="sk-1r51-2182"/>
+										<field id="start_time" uniqueId="sk-1r51-2222" uniqueid="sk-1r51-2248"/>
+										<field id="end_time" uniqueId="sk-1r51-2189" uniqueid="sk-1r51-2215"/>
+									</fields>
+									<filtering enableSearch="false" instantSearch="false"/>
+									<rowActions>
+										<action type="multi" label="Manage Race" uniqueId="sk-1rJY-3428" icon="sk-webicon-ink:breadcrumbs">
+											<actions>
+												<action type="pageredirect" redirectType="route" route="/Admin/race/{id}">
+													<params>
+														<param key="id" value="{{{id}}}"/>
+													</params>
+												</action>
+											</actions>
+										</action>
+									</rowActions>
+									<massActions uniqueId="sk-1r51-2299"/>
+									<actions uniqueId="sk-1r5--5294">
+										<action type="multi" label="New Race" uniqueId="sk-1r5L-2755">
+											<actions>
+												<action type="createRow" model="Races" appendorprepend="prepend" defaultmodefornewitems="edit" affectedrows="all"/>
+											</actions>
+										</action>
+									</actions>
+								</skuid__table>
+							</components>
+						</skuid__tabPanel>
+						<skuid__tabPanel name="Participants" uniqueId="sk-1r4w-1154">
+							<components>
+								<skuid__table uniqueid="sk-1r5l-4483" model="Participants" mode="read">
+									<fields>
+										<field id="first_name" uniqueId="sk-1r5l-4617" uniqueid="sk-1r5l-4643"/>
+										<field id="last_name" uniqueId="sk-1r5l-4650" uniqueid="sk-1r5l-4676"/>
+										<field id="email" uniqueId="sk-1r5l-4551" uniqueid="sk-1r5l-4577"/>
+										<field id="birthdate" uniqueId="sk-1r5l-4584" uniqueid="sk-1r5l-4610"/>
+										<field id="HasWaiver" uniqueId="sk-1rOL-3571" uniqueid="sk-1rOL-3605"/>
+									</fields>
+									<filtering enableSearch="false" instantSearch="false"/>
+									<rowActions/>
+									<massActions uniqueId="sk-1r5l-4727"/>
+								</skuid__table>
+							</components>
+						</skuid__tabPanel>
+					</tabs>
+				</skuid__tabSet>
+			</components>
+			<background/>
+			<styles>
+				<spacing top="6" bottom="6" left="6" right="6"/>
+			</styles>
+		</skuid__wrapper>
+	</components>
+	<resources>
+		<labels/>
+		<javascript/>
+		<css/>
+		<actionsequences/>
+	</resources>
+	<styles>
+		<styleitem type="background" bgtype="none"/>
+	</styles>
+</skuid__page>

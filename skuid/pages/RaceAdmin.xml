@@ -1,0 +1,157 @@
+<skuid__page unsavedchangeswarning="yes" personalizationmode="server" showsidebar="true" showheader="true" uniqueId="sk-1rCn-900" title="Race: {{$Model.Race.data.0.name}}">
+	<models>
+		<model id="Race" query="true" createrowifnonefound="false" datasource="Racer" limit="20" sobject="race_sakila" batchable="true" label="Race" labelplural="Races">
+			<fields>
+				<field id="start_time" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="Start Time" required="false" sortable="false" rel="start_time__rel" relationshipname="start_time__rel"/>
+				<field id="status" accessible="true" createable="true" defaultvalue="" displaytype="ENUM" editable="true" filterable="false" groupable="false" label="Status" required="false" sortable="false" rel="status__rel" relationshipname="status__rel"/>
+				<field id="name" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="Name" required="false" sortable="false" rel="name__rel" relationshipname="name__rel"/>
+				<field id="end_time" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="End Time" required="false" sortable="false" rel="end_time__rel" relationshipname="end_time__rel"/>
+				<field id="date" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="Date" required="false" sortable="false" rel="date__rel" relationshipname="date__rel"/>
+				<field id="id" accessible="true" createable="true" defaultvalue="" displaytype="INTEGER" editable="true" filterable="false" groupable="false" label="id" required="false" sortable="false" rel="id__rel" relationshipname="id__rel"/>
+				<field id="s3_photo_key" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="s3_photo_key" required="false" sortable="false" rel="s3_photo_key__rel" relationshipname="s3_photo_key__rel"/>
+			</fields>
+			<conditions>
+				<condition type="param" value="id" field="id" clientorserver="server" operator="=" enclosevalueinquotes="false" novaluebehavior="noquery"/>
+			</conditions>
+			<actions/>
+		</model>
+		<model id="RaceParticipants" query="true" createrowifnonefound="false" datasource="Racer" limit="100" sobject="race_participant_sakila" batchable="true" label="Race Participant" labelplural="Race_participants">
+			<fields>
+				<field id="id" accessible="true" createable="true" defaultvalue="" displaytype="INTEGER" editable="true" filterable="false" groupable="false" label="id" required="false" sortable="false" rel="id__rel" relationshipname="id__rel"/>
+				<field id="race_id" accessible="true" createable="true" defaultvalue="" displaytype="INTEGER" editable="true" filterable="false" groupable="false" label="race_id" required="false" sortable="false" rel="race_id__rel" relationshipname="race_id__rel"/>
+				<field id="participant_id" accessible="true" createable="true" defaultvalue="" displaytype="INTEGER" editable="true" filterable="false" groupable="false" label="participant_id" required="false" sortable="false" rel="participant_id__rel" relationshipname="participant_id__rel"/>
+				<field id="start_time" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="Start Time" required="false" sortable="false" rel="start_time__rel" relationshipname="start_time__rel"/>
+				<field id="end_time" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="End Time" required="false" sortable="false" rel="end_time__rel" relationshipname="end_time__rel"/>
+			</fields>
+			<conditions>
+				<condition type="param" value="id" field="race_id" operator="=" enclosevalueinquotes="false" novaluebehavior="noquery"/>
+			</conditions>
+			<actions/>
+		</model>
+	</models>
+	<components>
+		<skuid__wrapper uniqueid="sk-1rKR-2809">
+			<components>
+				<skuid__header model="Race" title="{{name}}" uniqueid="sk-1rDO-6537">
+					<skuid__buttonSet model="RaceParticipants" uniqueId="sk-1rDP-6738">
+						<groups>
+							<skuid__buttonGroup uniqueId="sk-1rDP-6749">
+								<buttons>
+									<skuid__button label="Start the Race!" uniqueId="sk-1rDP-6763" uniqueid="sk-1rDP-6789" icon="sk-webicon-ink:connected-apps" styleSettingsVariant="primary">
+										<actions>
+											<action type="updateRow" fieldmodel="Race" affectedrows="context">
+												<updates>
+													<update valuesource="fieldvalue" field="start_time" enclosevalueinquotes="false" value="NOW"/>
+													<update valuesource="fieldvalue" field="status" enclosevalueinquotes="true" value="In Progress"/>
+												</updates>
+											</action>
+											<action type="updateRow" fieldmodel="RaceParticipants" affectedrows="all">
+												<updates>
+													<update valuesource="modelmerge" field="start_time" enclosevalueinquotes="false" sourcemodel="Race" sourcefield="start_time"/>
+												</updates>
+											</action>
+											<action type="save">
+												<models>
+													<model>Race</model>
+													<model>RaceParticipants</model>
+												</models>
+											</action>
+										</actions>
+										<renderConditions logictype="and"/>
+										<enableConditions logictype="and">
+											<condition type="multiple" operator="not in" fieldmodel="Race" sourcetype="fieldvalue" nosourcerowbehavior="deactivate" field="status" fieldtargetobjects="race_sakila" value="" enclosevalueinquotes="true">
+												<values>
+													<value>In Progress</value>
+													<value>Completed</value>
+												</values>
+											</condition>
+										</enableConditions>
+										<styleVariantConditions/>
+									</skuid__button>
+									<skuid__button label="Stop the Race" uniqueId="sk-1rM6-14473" uniqueid="sk-1rM6-14513">
+										<actions>
+											<action type="updateRow" fieldmodel="Race" affectedrows="context">
+												<updates>
+													<update valuesource="fieldvalue" field="end_time" enclosevalueinquotes="false" value="NOW"/>
+													<update valuesource="fieldvalue" field="status" enclosevalueinquotes="true" value="Completed"/>
+												</updates>
+											</action>
+										</actions>
+										<renderConditions logictype="and"/>
+										<enableConditions logictype="and">
+											<condition type="multiple" operator="not in" fieldmodel="Race" sourcetype="fieldvalue" nosourcerowbehavior="deactivate" field="status" fieldtargetobjects="race_sakila" value="" enclosevalueinquotes="true">
+												<values>
+													<value>Completed</value>
+												</values>
+											</condition>
+										</enableConditions>
+										<styleVariantConditions/>
+									</skuid__button>
+								</buttons>
+							</skuid__buttonGroup>
+						</groups>
+					</skuid__buttonSet>
+					<styles>
+						<spacing bottom="4"/>
+					</styles>
+				</skuid__header>
+				<skuid__form showErrorsInline="true" model="Race" uniqueid="sk-1rCu-1865" mode="read">
+					<sections>
+						<section title="Race Details" uniqueId="sk-1rCu-1940" showHeading="false">
+							<rows>
+								<row uniqueId="sk-1rCu-1994" uniqueid="sk-1rCu-2081">
+									<fields>
+										<skuid__field id="start_time" uniqueId="sk-1rCu-2002" uniqueid="sk-1rCu-2028"/>
+									</fields>
+								</row>
+								<row uniqueId="sk-1rCu-2276" uniqueid="sk-1rCu-2363">
+									<fields>
+										<skuid__field id="end_time" uniqueId="sk-1rCu-2284" uniqueid="sk-1rCu-2310"/>
+									</fields>
+								</row>
+							</rows>
+						</section>
+					</sections>
+				</skuid__form>
+				<skuid__table uniqueid="sk-1rDC-5400" model="RaceParticipants" mode="read" title="Participants">
+					<fields>
+						<field id="participant_id" uniqueId="sk-1rDC-5534" uniqueid="sk-1rDC-5560" horizontalAlignment="right" label="Participant Id"/>
+						<field id="start_time" uniqueId="sk-1rDC-5567" uniqueid="sk-1rDC-5593"/>
+						<field id="end_time" uniqueId="sk-1rDC-5600" uniqueid="sk-1rDC-5626"/>
+					</fields>
+					<filtering enableSearch="false" instantSearch="false"/>
+					<rowActions>
+						<action type="multi" label="Finished!" uniqueId="sk-1rE5-10356" icon="sk-webicon-ink:check">
+							<actions>
+								<action type="updateRow" fieldmodel="RaceParticipants" affectedrows="context">
+									<updates>
+										<update valuesource="fieldvalue" field="end_time" enclosevalueinquotes="false" value="NOW"/>
+									</updates>
+								</action>
+								<action type="save">
+									<models>
+										<model>RaceParticipants</model>
+									</models>
+								</action>
+							</actions>
+						</action>
+					</rowActions>
+					<massActions uniqueId="sk-1rDC-5644"/>
+				</skuid__table>
+			</components>
+			<background/>
+			<styles>
+				<spacing top="6" bottom="6" left="6" right="6"/>
+			</styles>
+		</skuid__wrapper>
+	</components>
+	<resources>
+		<labels/>
+		<javascript/>
+		<css/>
+		<actionsequences/>
+	</resources>
+	<styles>
+		<styleitem type="background" bgtype="none"/>
+	</styles>
+</skuid__page>

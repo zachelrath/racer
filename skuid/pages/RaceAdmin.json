@@ -1,0 +1,11 @@
+{
+	"apiVersion": "v2",
+	"uniqueId": "RaceAdmin",
+	"type": "Desktop",
+	"name": "RaceAdmin",
+	"module": "",
+	"maxAutoSaves": 25,
+	"isMasterPage": false,
+	"isPublic": false,
+	"composerSettings": null
+}

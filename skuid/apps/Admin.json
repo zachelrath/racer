@@ -1,0 +1,15 @@
+{
+	"name": "Admin",
+	"baseUrl": "/Admin",
+	"defaultRoute": "/",
+	"routes": [
+		{
+			"route": "/",
+			"page": "Admin"
+		},
+		{
+			"route": "/race/{id}",
+			"page": "RaceAdmin"
+		}
+	]
+}

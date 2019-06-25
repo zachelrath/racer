@@ -1,0 +1,11 @@
+{
+	"name": "Racer",
+	"baseUrl": "/start",
+	"defaultRoute": "/",
+	"routes": [
+		{
+			"route": "/",
+			"page": "MobileApp"
+		}
+	]
+}

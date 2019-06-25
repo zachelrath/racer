@@ -1,0 +1,169 @@
+<skuidpage unsavedchangeswarning="yes" personalizationmode="server" showsidebar="true" showheader="true" useviewportmeta="true">
+	<models>
+		<model id="Participant" query="false" createrowifnonefound="true" datasource="Racer" limit="1" processonclient="true" sobject="participant_sakila" batchable="true" label="Participant" labelplural="Participants">
+			<fields>
+				<field id="email" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="email" required="false" sortable="false" rel="email__rel" relationshipname="email__rel"/>
+				<field id="birthdate" accessible="true" createable="true" defaultvalue="" displaytype="DATE" editable="true" filterable="false" groupable="false" label="birthdate" required="false" sortable="false" rel="birthdate__rel" relationshipname="birthdate__rel" overridemetadata="true" ogdisplaytype="DATETIME"/>
+				<field id="first_name" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="first_name" required="false" sortable="false" rel="first_name__rel" relationshipname="first_name__rel"/>
+				<field id="last_name" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="last_name" required="false" sortable="false" rel="last_name__rel" relationshipname="last_name__rel"/>
+				<field id="waiver_signature" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="waiver_signature" required="false" sortable="false" rel="waiver_signature__rel" relationshipname="waiver_signature__rel"/>
+				<field id="id" accessible="true" createable="true" defaultvalue="" displaytype="UUID" editable="true" filterable="false" groupable="false" label="id" required="false" sortable="false" rel="id__rel" relationshipname="id__rel"/>
+			</fields>
+			<conditions/>
+			<actions/>
+		</model>
+		<model id="Races" query="true" createrowifnonefound="false" datasource="Racer" limit="20" processonclient="true" sobject="race_sakila" batchable="true" label="Race" labelplural="Races">
+			<fields>
+				<field id="date" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="date" required="false" sortable="false" rel="date__rel" relationshipname="date__rel"/>
+				<field id="name" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="name" required="false" sortable="false" rel="name__rel" relationshipname="name__rel"/>
+				<field id="status" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="status" required="false" sortable="false" rel="status__rel" relationshipname="status__rel"/>
+				<field id="id" accessible="true" createable="true" defaultvalue="" displaytype="UUID" editable="true" filterable="false" groupable="false" label="id" required="false" sortable="false" rel="id__rel" relationshipname="id__rel"/>
+			</fields>
+			<conditions>
+				<condition type="fieldvalue" value="Completed" enclosevalueinquotes="true" field="status" operator="!="/>
+			</conditions>
+			<actions/>
+		</model>
+		<model id="RaceParticipant" query="false" createrowifnonefound="false" datasource="Racer" limit="" processonclient="true" sobject="race_participant_sakila" batchable="true" label="Race Participant" labelplural="Race_participants">
+			<fields>
+				<field id="participant_id" accessible="true" createable="true" defaultvalue="" displaytype="REFERENCE" editable="true" filterable="true" groupable="false" label="participant_id" required="false" sortable="false" rel="participant_id__rel" relationshipname="participant_id__rel" ref="participant_public"/>
+				<field id="participant_id__rel.id" accessible="true" createable="true" defaultvalue="" displaytype="UUID" editable="true" filterable="false" groupable="false" label="id" required="false" sortable="false" rel="id__rel" relationshipname="id__rel"/>
+				<field id="race_id" accessible="true" createable="true" defaultvalue="" displaytype="REFERENCE" editable="true" filterable="true" groupable="false" label="race_id" required="false" sortable="false" rel="race_id__rel" relationshipname="race_id__rel" ref="race_public"/>
+				<field id="race_id__rel.id" accessible="true" createable="true" defaultvalue="" displaytype="UUID" editable="true" filterable="false" groupable="false" label="id" required="false" sortable="false" rel="id__rel" relationshipname="id__rel"/>
+				<field id="start_time" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="start_time" required="false" sortable="false" rel="start_time__rel" relationshipname="start_time__rel"/>
+				<field id="end_time" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="end_time" required="false" sortable="false" rel="end_time__rel" relationshipname="end_time__rel"/>
+				<field id="id" accessible="true" createable="true" defaultvalue="" displaytype="INTEGER" editable="true" filterable="false" groupable="false" label="id" required="false" sortable="false" rel="id__rel" relationshipname="id__rel"/>
+			</fields>
+			<conditions/>
+			<actions/>
+		</model>
+		<model id="SelectedRace" query="false" createrowifnonefound="false" datasource="Racer" processonclient="true" limit="1" sobject="race_sakila" batchable="true" label="Race" labelplural="Races">
+			<fields>
+				<field id="id" accessible="true" createable="true" defaultvalue="" displaytype="INTEGER" editable="true" filterable="false" groupable="false" label="id" required="false" sortable="false" rel="id__rel" relationshipname="id__rel"/>
+				<field id="end_time" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="End Time" required="false" sortable="false" rel="end_time__rel" relationshipname="end_time__rel"/>
+				<field id="date" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="Date" required="false" sortable="false" rel="date__rel" relationshipname="date__rel"/>
+				<field id="start_time" accessible="true" createable="true" defaultvalue="" displaytype="DATETIME" editable="true" filterable="false" groupable="false" label="Start Time" required="false" sortable="false" rel="start_time__rel" relationshipname="start_time__rel"/>
+				<field id="status" accessible="true" createable="true" defaultvalue="" displaytype="ENUM" editable="true" filterable="false" groupable="false" label="Status" required="false" sortable="false" rel="status__rel" relationshipname="status__rel"/>
+				<field id="name" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="Name" required="false" sortable="false" rel="name__rel" relationshipname="name__rel"/>
+				<field id="s3_photo_key" accessible="true" createable="true" defaultvalue="" displaytype="TEXT" editable="true" filterable="true" groupable="false" label="s3_photo_key" required="false" sortable="false" rel="s3_photo_key__rel" relationshipname="s3_photo_key__rel"/>
+				<field id="latitude" accessible="true" createable="true" defaultvalue="" displaytype="DOUBLE" editable="true" filterable="false" groupable="false" label="latitude" precision="0" required="false" scale="0" sortable="false" rel="latitude__rel" relationshipname="latitude__rel"/>
+				<field id="longitude" accessible="true" createable="true" defaultvalue="" displaytype="DOUBLE" editable="true" filterable="false" groupable="false" label="longitude" precision="0" required="false" scale="0" sortable="false" rel="longitude__rel" relationshipname="longitude__rel"/>
+			</fields>
+			<conditions/>
+			<actions/>
+		</model>
+	</models>
+	<components>
+		<wrapper uniqueid="sk-1qsl-787">
+			<components>
+				<wizard deferstepcontentsrendering="false" buttonslocation="top" uniqueid="sk-1rTN-510">
+					<steps>
+						<step stepid="step1">
+							<components>
+								<basicfieldeditor showheader="true" showsavecancel="false" showerrorsinline="true" model="Participant" uniqueid="sk-1rTf-605" mode="edit">
+									<columns>
+										<column width="100%" uniqueid="sk-1rTf-601">
+											<sections>
+												<section title="Sign Up Details" uniqueid="sk-1rTf-602" collapsible="no">
+													<fields>
+														<field uniqueid="sk-1rTi-662" id="first_name"/>
+														<field uniqueid="sk-1rTi-663" id="last_name"/>
+														<field uniqueid="sk-1rTi-664" id="email"/>
+														<field uniqueid="sk-1rTi-665" id="birthdate"/>
+													</fields>
+												</section>
+											</sections>
+										</column>
+									</columns>
+								</basicfieldeditor>
+								<esignature__signature uniqueid="sk-1rUp-861" model="Participant" field="waiver_signature"/>
+								<buttonset model="Participant" uniqueid="sk-1rTl-679" position="center">
+									<buttons>
+										<button type="multi" label="Sign In" uniqueid="sk-1rTm-686">
+											<actions>
+												<action type="save">
+													<models>
+														<model>Participant</model>
+													</models>
+												</action>
+												<action type="runComponentAction" componentid="sk-1rUp-861" action="saveToField"/>
+												<action type="runComponentAction" componentid="sk-1rTN-510" action="navigateToStep" stepid="step2"/>
+											</actions>
+										</button>
+									</buttons>
+								</buttonset>
+							</components>
+							<actions/>
+						</step>
+						<step stepid="step2">
+							<components>
+								<queue model="Races" tagrendertype="template" searchbox="true" tokenizesearch="true" showsearchbydefault="true" hideheader="false" hidefooter="false" uniqueid="sk-1rT--733" title="Select a Race">
+									<interactions>
+										<interaction type="tap">
+											<action type="adoptRows" sourcemodel="Races" targetmodel="SelectedRace" affectedrows="context"/>
+											<action type="createRow" model="RaceParticipant" appendorprepend="prepend" defaultmodefornewitems="edit" affectedrows="context">
+												<defaults>
+													<default valuesource="modelmerge" field="participant_id" enclosevalueinquotes="false" sourcemodel="Participant" sourcefield="id"/>
+													<default valuesource="modelmerge" field="race_id" enclosevalueinquotes="false" sourcemodel="SelectedRace" sourcefield="id"/>
+												</defaults>
+											</action>
+											<action type="save">
+												<models>
+													<model>RaceParticipant</model>
+												</models>
+											</action>
+											<action type="runComponentAction" componentid="sk-1rTN-510" action="navigateToStep" stepid="step3"/>
+										</interaction>
+									</interactions>
+									<rendertemplate>{{name}} - {{date}}</rendertemplate>
+								</queue>
+							</components>
+							<actions/>
+						</step>
+						<step stepid="step3" steplabel="Step 3">
+							<components>
+								<basicfieldeditor showheader="true" showsavecancel="false" showerrorsinline="true" model="RaceParticipant" uniqueid="sk-1rV0-895" mode="read">
+									<columns>
+										<column width="100%" uniqueid="sk-1rV0-891">
+											<sections>
+												<section title="Race Details" uniqueid="sk-1rV0-892" collapsible="no">
+													<fields>
+														<field uniqueid="sk-1rV4-945" id="start_time"/>
+														<field uniqueid="sk-1rV4-946" id="end_time"/>
+													</fields>
+												</section>
+											</sections>
+										</column>
+									</columns>
+								</basicfieldeditor>
+							</components>
+							<actions>
+								<action uniqueid="sk-1rTN-528" type="navigate" stepid="step2" label="Previous Step" icon="sk-icon-arrow-left" secondary="true"/>
+								<action uniqueid="sk-1rTN-529" type="navigate" label="Next Step" icon="sk-icon-arrow-right"/>
+							</actions>
+						</step>
+					</steps>
+				</wizard>
+			</components>
+			<styles>
+				<styleitem type="background"/>
+				<styleitem type="border" padding="all">
+					<styles>
+						<styleitem property="padding" value="5em"/>
+						<styleitem property="box-sizing" value="border-box"/>
+					</styles>
+				</styleitem>
+				<styleitem type="size"/>
+			</styles>
+		</wrapper>
+	</components>
+	<resources>
+		<labels/>
+		<javascript/>
+		<css/>
+		<actionsequences uniqueid="sk-1qsE-581"/>
+	</resources>
+	<styles>
+		<styleitem type="background" bgtype="none"/>
+	</styles>
+</skuidpage>
